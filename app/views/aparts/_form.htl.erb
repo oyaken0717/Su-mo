@@ -1,0 +1,24 @@
+<%= form_for(@apart) do |f| %>
+  <% if @apart.errors.any? %>
+      <h2><%= @apart.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @apart.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+  <% end %>
+
+  <%= f.label :物件名 %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :賃料 %><br>
+    <%= f.number_field :rent %><br>
+    <%= f.label :住所 %><br>
+    <%= f.text_field :address %><br>
+    <%= f.label :築年数 %><br>
+    <%= f.number_field :age %><br>
+    <%= f.label :備考 %><br>
+    <%= f.text_field :note %><br>
+    <%= f.submit %>
+<% end %>
+
+<%= link_to "ブログ一覧画面にもどる", blogs_path %>

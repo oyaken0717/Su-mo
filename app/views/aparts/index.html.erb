@@ -1,0 +1,24 @@
+<h1>一覧</h1>
+<h1>物件一覧</h1>
+<table>
+  <tr>
+    <th>物件名</th>
+    <th>賃料</th>
+    <th>住所</th>
+    <th>築年数</th>
+    <th>備考</th>
+  </tr>
+<% @aparts.each do |apart| %>
+  <tr>
+    <td><%= apart.name %></td>
+    <td><%= apart.rent %></td>
+    <td><%= apart.address %></td>
+    <td><%= apart.age %></td>
+    <td><%= apart.note %></td>
+    <td><%= link_to "詳細", apart_path(apart.id) %>
+    <td><%= link_to "編集", edit_apart_path(apart.id)%></td>
+    <td><%= link_to "削除", apart_path(apart.id), method: :delete,　data: { confirm: "本当に削除していいですか？"}%></td>
+
+  </tr>
+<% end %>
+</table>
