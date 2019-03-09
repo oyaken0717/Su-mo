@@ -43,11 +43,14 @@ class ApartsController < ApplicationController
   private
 
   def apart_params
+    # what
+    # how
+    # why
     params.require(:apart).permit(:name, :rent, :address, :age, :note, stations_attributes: [:line, :name, :foot])
   end
 
   def set_apart
-    @apart = Apart.find(params[:id])
+    @apart = Apart.find_by(id:params[:id]) || Apart.new
   end
 
 end
