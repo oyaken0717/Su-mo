@@ -8,5 +8,4 @@ class Apart < ApplicationRecord
     validates :age
     validates :note
   end
-
 end
