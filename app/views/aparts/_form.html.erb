@@ -18,7 +18,19 @@
     <%= f.number_field :age %><br>
     <%= f.label :備考 %><br>
     <%= f.text_field :note %><br>
+    <hr>
+    <% j = 1 %>
+    <%= f.fields_for :stations do |i| %>
+      <h4><%= "最寄り駅#{j}" %></h4>
+      <%= i.label :路線名 %><br>
+      <%= i.text_field :line %><br>
+      <%= i.label :駅名 %><br>
+      <%= i.text_field :name %><br>
+      <%= i.label :徒歩分数 %><br>
+      <%= i.number_field :foot %><br>
+      <% j += 1 %>
+    <% end %>
     <%= f.submit %>
-<% end %>
 
-<%= link_to "ブログ一覧画面にもどる", blogs_path %>
+<% end %>
+<%= link_to "戻る", aparts_path %>

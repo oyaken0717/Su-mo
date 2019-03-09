@@ -2,21 +2,20 @@ class ApartsController < ApplicationController
   before_action :set_apart, only: [:show, :edit, :update, :destroy]
 
   def index
-    @apart = Apart.all
+    @aparts = Apart.all
   end
 
   def new
     @apart = Apart.new
     2.times{
       @apart.stations.build
-        sum += 1
     }
   end
 
   def create
-    @apart = Apart.create(apart_params)
+    @apart = Apart.new(apart_params)
     if @apart.save
-      redirect_to "new_apart_path"
+      redirect_to aparts_path
     else
       render 'new'
     end
@@ -44,7 +43,7 @@ class ApartsController < ApplicationController
   private
 
   def apart_params
-    params.require(:apart).permit(:name, :rent, :address, :age, :note)
+    params.require(:apart).permit(:name, :rent, :address, :age, :note, stations_attributes: [:line, :name, :foot])
   end
 
   def set_apart
